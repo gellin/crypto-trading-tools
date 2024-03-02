@@ -34,11 +34,11 @@ if response.status_code == 200:
         market_name, data = list(market_data.items())[0]
 
         # Check if volume is above MIN_VOL constant
-        if (float(data['volume']) > MIN_VOL):
+        if (float(data['volume']) > float(args.vol)):
             
             # Calculate spread and display Ticker if above MIN_SPREAD
             spread = -round(((float(data['bid']) / float(data['ask']) * 100) - 100), 5)
-            if spread > float(MIN_SPREAD):
+            if spread > float(args.spread):
                 print(f"Market: {market_name}")
                 print(f"Spread {spread}")
                 print(f"Initial Price: {data['initialprice']}")
